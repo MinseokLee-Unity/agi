@@ -91,12 +91,13 @@ def _impl(ctx):
         ACTION_NAMES.cpp_link_nodeps_dynamic_library,
         ACTION_NAMES.cpp_link_static_library,
         ACTION_NAMES.strip,
-        ACTION_NAMES.objc_archive,
-        ACTION_NAMES.objc_compile,
-        ACTION_NAMES.objc_executable,
-        ACTION_NAMES.objc_fully_link,
-        ACTION_NAMES.objcpp_compile,
-        ACTION_NAMES.objcpp_executable,
+		# MSLEE: Comment out missing fields
+        #ACTION_NAMES.objc_archive,
+        #ACTION_NAMES.objc_compile,
+        #ACTION_NAMES.objc_executable,
+        #ACTION_NAMES.objc_fully_link,
+        #ACTION_NAMES.objcpp_compile,
+        #ACTION_NAMES.objcpp_executable,
         ACTION_NAMES.clif_match,
     ]
 
