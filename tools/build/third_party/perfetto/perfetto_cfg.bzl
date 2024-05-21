@@ -71,8 +71,20 @@ PERFETTO_CONFIG = struct(
     sqlite = ["@sqlite//:sqlite"],
     sqlite_ext_percentile = ["@sqlite_src//:percentile_ext"],
     version_header = [],
+    # MSLEE: Add missing field 'base_platform'
+    # Target exposing platform-specific functionality for base. This is
+    # overriden in Google internal builds.
+    base_platform = ["//:perfetto_base_default_platform"],
     zlib = ["@net_zlib//:zlib"],
+    # MSLEE: Add missing fields for python
+    # The Python targets are empty on the standalone build because we assume
+    # any relevant deps are installed on the system or are not applicable.
+    protobuf_py = [],
+    pandas_py = [],
+    tp_vendor_py = [],
+    tp_resolvers_py = [],
   ),
+  
   public_visibility = [
       "//visibility:public",
   ],
@@ -89,4 +101,9 @@ PERFETTO_CONFIG = struct(
     cc_library =_always_optimize_cc_library,
     cc_binary = _always_optimize_cc_binary,
   ),
+  # MSLEE: Add missing field 'default_copts'
+  # The default copts which we use to compile C++ code.
+  default_copts = [
+	"-std=c++14",
+  ]
 )
