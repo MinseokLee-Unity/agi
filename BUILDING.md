@@ -27,7 +27,7 @@ The build output will be at `<path-to-agi-source>/bazel-bin/pkg`.
 
 Start a console, with administrator privilege, and type:
 
-`choco install bazel --version 5.2.0`
+`choco install bazel --version 7.1.1`
 
 In the same console, install Python and MSYS2 as well:
 
@@ -40,9 +40,9 @@ From the Start Menu select the `MSYS2 64bit / MSYS2 MinGW 64-bit` shell:
 1. Update MSYS2 with: `pacman -Syu`.
 2. If the update ends with “close the window and run it again”, close and reopen the window and repeat 1.
 3. Fetch required tools with: `pacman -S curl git zip unzip patch`
-4. Download gcc with: `curl -O http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-gcc-10.2.0-10-any.pkg.tar.zst`
-5. Download gcc-libs with: `curl -O http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-gcc-libs-10.2.0-10-any.pkg.tar.zst`
-6. Install the downloaded packages with: `pacman -U mingw-w64-x86_64-gcc*-10.2.0-10-any.pkg.tar.zst`
+4. Download gcc with: `curl -O https://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-gcc-13.2.0-6-any.pkg.tar.zst`
+5. Download gcc-libs with: `curl -O https://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-gcc-libs-13.2.0-6-any.pkg.tar.zst`
+6. Install the downloaded packages with: `pacman -U mingw-w64-x86_64-gcc*-13.2.0-6-any.pkg.tar.zst`
 7. Close the MSYS2 terminal
 
 ### Install Java Development Kit 11
@@ -96,7 +96,7 @@ The following environment variables will need to be set prior to building:
 | Variable            | Target                                                      |
 | ------------------- | ----------------------------------------------------------- |
 | `ANDROID_HOME`      | Path to Android SDK, e.g. `C:\Android\sdk`                  |
-| `ANDROID_NDK_HOME`  | Path to Android NDK, e.g. `%ANDROID_HOME%\ndk\21.3.6528147` |
+| `ANDROID_NDK_HOME`  | Path to Android NDK, e.g. `C:\Android\sdk\ndk\21.3.6528147` |
 | `BAZEL_SH`          | `C:\tools\msys64\usr\bin\bash.exe`                          |
 | `TMP`               | `C:\tmp`                                                    |
 
