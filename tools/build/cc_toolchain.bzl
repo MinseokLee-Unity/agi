@@ -16,7 +16,10 @@
 # Bazel's cc_configure, but will use mingw on Windows.
 
 load("@bazel_tools//tools/cpp:lib_cc_configure.bzl", "get_cpu_value", "resolve_labels")
-load("@bazel_tools//tools/cpp:osx_cc_configure.bzl", "configure_osx_toolchain")
+# MSLEE: Add windows_cc_configure.bzl
+load("@bazel_tools//tools/cpp:windows_cc_configure.bzl", "configure_windows_toolchain")
+# MSLEE: osx_cc_configure.bzl does not exist anymore?
+#load("@bazel_tools//tools/cpp:osx_cc_configure.bzl", "configure_osx_toolchain")
 load("@bazel_tools//tools/cpp:unix_cc_configure.bzl", "configure_unix_toolchain")
 load("@bazel_tools//tools/osx:xcode_configure.bzl", "run_xcode_locator")
 
@@ -93,9 +96,12 @@ def _generate_cpp_only_build_file(repository_ctx, cpu_value, paths):
 def _cc_autoconf_toolchains_impl(repository_ctx):
     paths = resolve_labels(repository_ctx, [
         "@bazel_tools//tools/cpp:BUILD.toolchains.tpl",
-        "@bazel_tools//tools/osx/crosstool:BUILD.toolchains",
-        "@bazel_tools//tools/osx/crosstool:osx_archs.bzl",
-        "@bazel_tools//tools/osx:xcode_locator.m",
+        # MSLEE: Add windows
+        "@bazel_tools//tools/windows:BUILD",
+        # MSLEE: Not exist anymore?
+        #"@bazel_tools//tools/osx/crosstool:BUILD.toolchains",
+        #"@bazel_tools//tools/osx/crosstool:osx_archs.bzl",
+        #"@bazel_tools//tools/osx:xcode_locator.m",
     ])
     cpu_value = get_cpu_value(repository_ctx)
 
@@ -124,9 +130,12 @@ _cc_autoconf_toolchains = repository_rule(
 def _cc_autoconf_impl(repository_ctx):
   cpu_value = get_cpu_value(repository_ctx)
   if cpu_value == "x64_windows":
+    # MSLEE: Windows build reaches here
     _configure_windows_toolchain(repository_ctx)
   elif cpu_value == "darwin" or cpu_value == "darwin_arm64":
-    configure_osx_toolchain(repository_ctx, cpu_value, {})
+    # MSLEE: Dunno what darwin is, but I commented out load() for configure_osx_toolchain.
+    #        Just replace it with configure_unix_toolchain who cares it won't be called
+    configure_unix_toolchain(repository_ctx, cpu_value, {})
   else:
     configure_unix_toolchain(repository_ctx, cpu_value, {})
 
