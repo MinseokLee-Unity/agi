@@ -38,8 +38,9 @@ def gapid_dependencies(android = True, mingw = True, locals = {}):
         locals = locals,
         organization = "bazelbuild",
         project = "rules_go",
-        commit = "efc3212592320c1ab7f986c9a7882770ee06ad3b",  # 0.34.0
-        sha256 = "eb10f4436ddc732127afedf78636637d0cc9b256aba9f643a452914289266e6b",
+        commit = "ed2f625de17a050ed0d435a222ad3e4691092215",  # MSLEE: 0.47.1
+        #commit = "efc3212592320c1ab7f986c9a7882770ee06ad3b",  # 0.34.0
+        #sha256 = "eb10f4436ddc732127afedf78636637d0cc9b256aba9f643a452914289266e6b",
     )
 
     maybe_repository(
@@ -48,8 +49,9 @@ def gapid_dependencies(android = True, mingw = True, locals = {}):
         locals = locals,
         organization = "bazelbuild",
         project = "rules_python",
-        commit = "9bf7c49ea1920e497f857ccc1e9c2d1189c8a1c9",
-        sha256 = "ebeae40415e1ac0ab4e4323f91d6213ec799ad8fcacecd4c499009e1d8d2eb51",
+        commit = "df55823a6922324ff0c838bf58ed4acf40154bb8",  # MSLEE: 0.32.2
+        #commit = "9bf7c49ea1920e497f857ccc1e9c2d1189c8a1c9",
+        #sha256 = "ebeae40415e1ac0ab4e4323f91d6213ec799ad8fcacecd4c499009e1d8d2eb51",
     )
 
     maybe_repository(
@@ -58,8 +60,9 @@ def gapid_dependencies(android = True, mingw = True, locals = {}):
         locals = locals,
         organization = "bazelbuild",
         project = "bazel-gazelle",
-        commit = "e9091445339de2ba7c01c3561f751b64a7fab4a5",  # 0.23.0
-        sha256 = "03e266ed67fd21f6fbede975773a569d397312daae71980d34ff7f7e087b7b14",
+        commit = "1b331b6d9cb2d981580a8d3e2dfc551185790737",   # MSLEE: 0.36.0
+        #commit = "e9091445339de2ba7c01c3561f751b64a7fab4a5",  # 0.23.0
+        #sha256 = "03e266ed67fd21f6fbede975773a569d397312daae71980d34ff7f7e087b7b14",
     )
 
     maybe_repository(github_repository,
@@ -78,8 +81,9 @@ def gapid_dependencies(android = True, mingw = True, locals = {}):
         locals = locals,
         organization = "google",
         project = "protobuf",
-        commit = "ab840345966d0fa8e7100d771c92a73bfbadd25c",  # 3.21.5
-        sha256 = "0025119f5c97871436b4b271fee48bd6bfdc99956023e0d4fd653dd8eaaeff52",
+        commit = "2434ef2adf0c74149b9d547ac5fb545a1ff8b6b5", # MSLEE: 5.26.1
+        #commit = "ab840345966d0fa8e7100d771c92a73bfbadd25c",  # 3.21.5
+        #sha256 = "0025119f5c97871436b4b271fee48bd6bfdc99956023e0d4fd653dd8eaaeff52",
         repo_mapping = {"@zlib": "@net_zlib"},
     )
 
@@ -89,8 +93,9 @@ def gapid_dependencies(android = True, mingw = True, locals = {}):
         locals = locals,
         organization = "grpc",
         project = "grpc",
-        commit = "d2054ec6c6e8abcecf0e24b0b4ee75035d80c3cc",  # 1.48.0
-        sha256 = "ea0da456d849eafa5287dc1e9d53c065896dca2cd896a984101ebe0708979dca",
+        commit = "ac1418547838ab067a02af4402046f7bc1cbc44c", # MSLEE: 1.63.0
+        #commit = "d2054ec6c6e8abcecf0e24b0b4ee75035d80c3cc",  # 1.48.0
+        #sha256 = "ea0da456d849eafa5287dc1e9d53c065896dca2cd896a984101ebe0708979dca",
         repo_mapping = {"@zlib": "@net_zlib"},
         patches = [
             # Remove calling the go dependencies, since we do that ourselves.
@@ -159,13 +164,15 @@ def gapid_dependencies(android = True, mingw = True, locals = {}):
         locals = locals,
         organization = "abseil",
         project = "abseil-cpp",
-        commit = "273292d1cfc0a94a65082ee350509af1d113344d",  # LTS 20220623, Patch 0
-        sha256 = "6764f226bd6e2d8ab9fe2f3cab5f45fb1a4a15c04b58b87ba7fa87456054f98b",
+        commit = "d7aaad83b488fd62bd51c81ecf16cd938532cc0a",  # MSLEE: LTS 20240116, Patch 2
+        #commit = "273292d1cfc0a94a65082ee350509af1d113344d",  # LTS 20220623, Patch 0
+        #sha256 = "6764f226bd6e2d8ab9fe2f3cab5f45fb1a4a15c04b58b87ba7fa87456054f98b",
         patches = [
+	        # MSLEE: No need to patch in newer version	
             # Workaround for https://github.com/abseil/abseil-cpp/issues/326.
-            "@gapid//tools/build/third_party:abseil_macos_fix.patch",
+            #"@gapid//tools/build/third_party:abseil_macos_fix.patch",
             # Pick up bcrypt library on Windows.
-            "@gapid//tools/build/third_party:abseil_windows_fix.patch",
+            #"@gapid//tools/build/third_party:abseil_windows_fix.patch",
         ],
     )
 
@@ -206,11 +213,13 @@ def gapid_dependencies(android = True, mingw = True, locals = {}):
         locals = locals,
         organization = "google",
         project = "perfetto",
-        commit = "0ff403688efce9d5de43d69cae3c835e993e4730",  # 29+
-        sha256 = "e609a91a6d64caf9a4e4b64f1826d160eba8fd84f7e5e94025ba287374e78e30",
+        commit = "7add4fded398ef47414a556b7b81d212a4482a66",   # MSLEE: 45
+        #commit = "0ff403688efce9d5de43d69cae3c835e993e4730",  # 29+
+        #sha256 = "e609a91a6d64caf9a4e4b64f1826d160eba8fd84f7e5e94025ba287374e78e30",
         patches = [
+            # MSLEE: No need to patch in newer version
             # Fix a Windows MinGW build issue.
-            "@gapid//tools/build/third_party:perfetto.patch",
+            #"@gapid//tools/build/third_party:perfetto.patch",
         ]
     )
 
